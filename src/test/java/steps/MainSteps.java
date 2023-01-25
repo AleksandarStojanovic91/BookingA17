@@ -3,9 +3,13 @@ package steps;
 import excel.ExcelReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.testng.Reporter;
+import pages.BookingStaysPage;
 
+import java.awt.print.Book;
 import java.io.IOException;
 import java.util.Map;
 
@@ -13,6 +17,7 @@ public class MainSteps extends BaseSteps {
 
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
     String quit = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("quit");
+    String env = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("env");
 
     Map<String, String> data;
 
@@ -38,5 +43,29 @@ public class MainSteps extends BaseSteps {
         data = new ExcelReader().getRowDataByID(file,sheet,tc_id);
     }
 
+    @Given("I navigate to booking stays page")
+    public void iNavigateToBookingStaysPage() throws Exception {
+        openApp(env);
+    }
+
+    @When("I set destination to {string}")
+    public void iSetDestinationTo(String destination) throws Exception {
+        new BookingStaysPage(driver).setDestination(destination);
+    }
+
+    @And("I set check in date to {string} and check out date to {string}")
+    public void iSetCheckInDateToAndCheckOutDateTo(String checkIn, String checkOut) throws Exception {
+        new BookingStaysPage(driver).setCheckInDateAndCheckOutDate(checkIn, checkOut);
+    }
+
+    @And("I add {string} adults and {string} children with age {string} and {string} rooms")
+    public void iAddAdultsAndChildrenWithAgeAndRooms(String adultsNum, String childrenNum, String childAge, String rooms) throws Exception {
+        new BookingStaysPage(driver).addGuests(adultsNum, childrenNum, childAge, rooms);
+    }
+
+    @And("I click search button")
+    public void iClickSearchButton() throws Exception {
+        new BookingStaysPage(driver).search();
+    }
 
 }
