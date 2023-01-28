@@ -1,5 +1,6 @@
 package pages.qase;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -48,11 +49,12 @@ public class TestCreatePage extends BasePage {
         typeText(description, data.get("Description"), "Description");
         click(automationStatusDropdown);
         click(automatedFiled);
-        click(addStep);
-        for(int i = 0; i < Integer.parseInt(data.get("StepNum")); i++) {
-            typeText(stepAction.get(i), data.get("StepAction_"+i), "Step");
-            typeText(stepData.get(i), data.get("StepData_"+i), "StepData");
-            typeText(expectedResult.get(i), data.get("ExpectedResults_"+i), "ExpectedResults");
+
+        for(int i = 1; i <= Integer.parseInt(data.get("StepNum")); i++) {
+            click(addStep);
+            typeText(stepAction.get(0), data.get("StepAction_"+i), "Step");
+            typeText(stepData.get(0), data.get("StepData_"+i), "StepData");
+            typeText(expectedResult.get(0), data.get("ExpectedResults_"+i), "ExpectedResults");
         }
         click(saveCase);
     }

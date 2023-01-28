@@ -7,14 +7,35 @@
     <parameter name="env" value="QASE"/>
     <parameter name="quit" value="No"/>
 
-    <test name="QASE Stays Tests">
+    <test name="Create test case TC_0001">
 
         <parameter name="email" value="aleksandar.stojanovic@qakursevionline.com"/>
         <parameter name="password" value="TestPass123!"/>
+        <parameter name="id" value="TC_0001"/>
 
         <classes>
-            <class name="tests.QaseTest"/>
+            <class name="tests.QaseTest">
+                <methods>
+                    <include name="createTestCase"/>
+                </methods>
+            </class>
         </classes>
+
+    </test>
+    <test name="Create test case TC_0002">
+
+        <parameter name="email" value="aleksandar.stojanovic@qakursevionline.com"/>
+        <parameter name="password" value="TestPass123!"/>
+        <parameter name="id" value="TC_0002"/>
+
+        <classes>
+            <class name="tests.QaseTest">
+                <methods>
+                    <include name="createTestCase"/>
+                </methods>
+            </class>
+        </classes>
+
     </test>
 
 </suite>

@@ -16,7 +16,7 @@ import java.util.Map;
 public class QaseTest extends BaseSteps {
 
     @BeforeMethod
-    @Parameters({"browser","env", ""})
+    @Parameters({"browser","env"})
     public void setup(String browser, String env) throws Exception {
         init(browser);
         openApp(env);
@@ -55,14 +55,12 @@ public class QaseTest extends BaseSteps {
     @Test
     @Parameters({"email","password","id"})
     public void createTestCase(String email, String password, String id) throws Exception {
-        Map<String, String> data = new ExcelReader().getRowData("QaseTestData","TestCases",Integer.parseInt(id));
+        Map<String, String> data = new ExcelReader().getRowDataByID("QaseTestData","TestCases",id);
 
         new LoginPage(driver).login(email,password);
         new ProjectsPage(driver).selectProject(data.get("Project"));
         new RepositoryPage(driver).addTestCase(data.get("Suite"));
         new TestCreatePage(driver).createTestCase(data);
     }
-
-
 
 }
