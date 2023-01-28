@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="QASE Tests" thread-count="1" data-provider-thread-count="1">
+
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="env" value="QASE"/>
+    <parameter name="quit" value="No"/>
+
+    <test name="QASE Stays Tests">
+
+        <parameter name="email" value="aleksandar.stojanovic@qakursevionline.com"/>
+        <parameter name="password" value="TestPass123!"/>
+
+        <classes>
+            <class name="tests.QaseTest"/>
+        </classes>
+    </test>
+
+</suite>

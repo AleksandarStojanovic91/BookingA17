@@ -7,9 +7,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.testng.Reporter;
-import pages.BookingStaysPage;
+import pages.booking.BookingStaysPage;
 
-import java.awt.print.Book;
 import java.io.IOException;
 import java.util.Map;
 

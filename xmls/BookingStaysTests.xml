@@ -4,7 +4,7 @@
 <suite name="Booking Tests" thread-count="1" data-provider-thread-count="1">
 
     <parameter name="browser" value="CHROME"/>
-    <parameter name="env" value="PROD"/>
+    <parameter name="env" value="BOOKING"/>
     <parameter name="quit" value="No"/>
 
     <test name="Booking Stays Tests">
