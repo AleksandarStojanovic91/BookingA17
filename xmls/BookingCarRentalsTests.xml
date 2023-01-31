@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Booking Tests" thread-count="1" data-provider-thread-count="1">
+
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="env" value="PROD"/>
+    <parameter name="quit" value="No"/>
+
+    <test name="Booking Car Rentals Tests">
+        <classes>
+            <class name="runners.BookingCarRentalsRunner"/>
+        </classes>
+    </test>
+
+</suite>
