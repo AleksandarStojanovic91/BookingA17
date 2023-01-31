@@ -46,7 +46,12 @@ public class ExcelReader {
             if(sheet.getRow(i).getCell(0).getStringCellValue().equalsIgnoreCase(tc_id)){
                 for(int j = 0; j < lastColNum; j++){
                     String key = sheet.getRow(1).getCell(j).getStringCellValue();
-                    String value = sheet.getRow(i).getCell(j).getStringCellValue();
+                    String value;
+                    try {
+                        value = sheet.getRow(i).getCell(j).getStringCellValue();
+                    }catch (Exception e){
+                        value = String.valueOf(sheet.getRow(i).getCell(j).getNumericCellValue()).split("\\.")[0];
+                    }
                     data.put(key, value);
                 }
             }
