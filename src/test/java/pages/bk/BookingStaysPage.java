@@ -1,4 +1,4 @@
-package pages;
+package pages.bk;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import pages.BasePage;
 
 import java.util.List;
 
@@ -45,6 +46,9 @@ public class BookingStaysPage extends BasePage {
 
     @FindBy(xpath = "//button/span[contains(text(),'Search')]/..")
     WebElement search;
+
+    @FindBy(css = "[title='Naslovna']")
+    WebElement homePage;
 
     String destinationRecommendation1 = "//span[@class='search_hl_name' and text()='$$']";
     String destinationRecommendation2 = "//div[@data-testid='destination-container']//div[text()='$$']";
@@ -150,6 +154,10 @@ public class BookingStaysPage extends BasePage {
 
     public void search() throws Exception {
         click(search, "Search");
+    }
+
+    public void goToHomePage() throws Exception {
+        click(homePage,"Home Page");
     }
 
 }

@@ -9,7 +9,7 @@
 
     <test name="Booking Stays Tests">
         <classes>
-            <class name="runners.BookingStaysRunner"/>
+            <class name="runners.bk.BKRunner"/>
         </classes>
     </test>
 

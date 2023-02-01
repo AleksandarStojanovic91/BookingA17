@@ -1,4 +1,4 @@
-package steps;
+package steps.bk;
 
 import excel.ExcelReader;
 import io.cucumber.java.After;
@@ -7,13 +7,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.testng.Reporter;
-import pages.BookingStaysPage;
+import pages.bk.BookingStaysPage;
+import steps.BaseSteps;
 
-import java.awt.print.Book;
 import java.io.IOException;
 import java.util.Map;
 
-public class MainSteps extends BaseSteps {
+public class BKSteps extends BaseSteps {
 
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
     String quit = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("quit");
@@ -45,7 +45,7 @@ public class MainSteps extends BaseSteps {
 
     @Given("I navigate to booking stays page")
     public void iNavigateToBookingStaysPage() throws Exception {
-        openApp(env);
+        openBKApp(env);
     }
 
     @When("I set destination to {string}")

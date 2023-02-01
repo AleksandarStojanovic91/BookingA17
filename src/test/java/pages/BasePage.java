@@ -14,21 +14,16 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class BasePage {
-    WebDriver driver;
+
+    public WebDriver driver;
     WebDriverWait webDriverWait;
+
     int waitTime = 5;
     int maxRetries = 3;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
-    }
-
-    @FindBy(css = "[title='Naslovna']")
-    WebElement homePage;
-
-    public void goToHomePage() throws Exception {
-        click(homePage,"Home Page");
     }
 
     public void click(WebElement element, String log) throws Exception {

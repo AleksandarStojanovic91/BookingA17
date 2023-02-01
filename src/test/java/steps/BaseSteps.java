@@ -20,6 +20,7 @@ public class BaseSteps {
 
     DriverManager driverManager;
     public WebDriver driver;
+
     String path = "src/results/screenshots/";
 
     public void init(String type) throws Exception {
@@ -32,11 +33,23 @@ public class BaseSteps {
         driverManager.quitDriver();
     }
 
-    public void openApp(String env) throws Exception {
+    public void openBKApp(String env) throws Exception {
         env = env.toUpperCase();
         switch (env) {
             case "PROD": {
                 driver.get("https://www.booking.com/");
+            }
+            break;
+            default:
+                throw new Exception("Environment: " + env + " not supported!");
+        }
+    }
+
+    public void openKPApp(String env) throws Exception {
+        env = env.toUpperCase();
+        switch (env) {
+            case "PROD": {
+                driver.get("https://kupujemprodajem.com/");
             }
             break;
             default:
