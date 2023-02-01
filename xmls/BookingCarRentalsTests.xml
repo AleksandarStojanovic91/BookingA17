@@ -4,12 +4,12 @@
 <suite name="Booking Tests" thread-count="1" data-provider-thread-count="1">
 
     <parameter name="browser" value="CHROME"/>
-    <parameter name="env" value="BOOKING"/>
+    <parameter name="env" value="PROD"/>
     <parameter name="quit" value="No"/>
 
-    <test name="Booking Stays Tests">
+    <test name="Booking Car Rentals Tests">
         <classes>
-            <class name="runners.bk.BKRunner"/>
+            <class name="runners.BookingCarRentalsRunner"/>
         </classes>
     </test>
 

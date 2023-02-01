@@ -36,8 +36,24 @@ public class BaseSteps {
     public void openBKApp(String env) throws Exception {
         env = env.toUpperCase();
         switch (env) {
-            case "PROD": {
+            case "BOOKING": {
                 driver.get("https://www.booking.com/");
+            }
+            break;
+            case "QASE": {
+                driver.get("https://app.qase.io/login");
+            }
+            break;
+            default:
+                throw new Exception("Environment: " + env + " not supported!");
+        }
+    }
+
+    public void openQASEApp(String env) throws Exception {
+        env = env.toUpperCase();
+        switch (env) {
+            case "QASE": {
+                driver.get("https://app.qase.io/login");
             }
             break;
             default:

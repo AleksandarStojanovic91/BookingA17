@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 public class BasePage {
 
     public WebDriver driver;
-    WebDriverWait webDriverWait;
+    public WebDriverWait webDriverWait;
 
     int waitTime = 5;
     int maxRetries = 3;
@@ -127,6 +127,11 @@ public class BasePage {
 
     public boolean elementExistsByXpath(String xpath){
         return driver.findElements(By.xpath(xpath)).size()>0;
+    }
+
+    public void hover(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).build().perform();
     }
 
 }
