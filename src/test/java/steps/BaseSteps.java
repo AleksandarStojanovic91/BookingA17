@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class BaseSteps {
@@ -26,7 +27,7 @@ public class BaseSteps {
     public void init(String type) throws Exception {
         driverManager = DriverManagerFactory.getDriverManager(type);
         driver = driverManager.getDriver();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     public void quit() {
@@ -54,6 +55,18 @@ public class BaseSteps {
         switch (env) {
             case "QASE": {
                 driver.get("https://app.qase.io/login");
+            }
+            break;
+            default:
+                throw new Exception("Environment: " + env + " not supported!");
+        }
+    }
+
+    public void openYTApp(String env) throws Exception {
+        env = env.toUpperCase();
+        switch (env) {
+            case "YT": {
+                driver.get("https://youtube.com");
             }
             break;
             default:

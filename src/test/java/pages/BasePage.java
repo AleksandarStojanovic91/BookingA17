@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -10,6 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -27,7 +31,7 @@ public class BasePage {
     }
 
     public void click(WebElement element, String log) throws Exception {
-        webDriverWait = new WebDriverWait(driver, waitTime);
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(waitTime));
         Actions actions = new Actions(driver);
 
         int retryCount = 0;
@@ -53,7 +57,7 @@ public class BasePage {
     }
 
     public void click(WebElement element){
-        webDriverWait = new WebDriverWait(driver, waitTime);
+        webDriverWait = new WebDriverWait(driver,  Duration.ofSeconds(waitTime));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
 
         Actions actions = new Actions(driver);
@@ -63,7 +67,7 @@ public class BasePage {
     }
 
     public void typeText(WebElement element,String text, String log) throws Exception {
-        webDriverWait = new WebDriverWait(driver, waitTime);
+        webDriverWait = new WebDriverWait(driver,  Duration.ofSeconds(waitTime));
         Actions actions = new Actions(driver);
 
         int retryCount = 0;
@@ -92,7 +96,7 @@ public class BasePage {
     }
 
     public void selectByValue(WebElement element, String value, String log) throws Exception {
-        webDriverWait = new WebDriverWait(driver, waitTime);
+        webDriverWait = new WebDriverWait(driver,  Duration.ofSeconds(waitTime));
 
         int retryCount = 0;
         while (retryCount<maxRetries) {
@@ -132,6 +136,23 @@ public class BasePage {
     public void hover(WebElement element){
         Actions actions = new Actions(driver);
         actions.moveToElement(element).build().perform();
+    }
+
+    public void setAttribute(WebElement element, String attr, String value){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute(arguments[1],arguments[2])",
+                element, "value", value
+        );
+    }
+
+    public void scroll() throws AWTException {
+//        JavascriptExecutor jse = (JavascriptExecutor)driver;
+//        jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_END);
+        robot.keyRelease(KeyEvent.VK_END);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
     }
 
 }
